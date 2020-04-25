@@ -1,5 +1,7 @@
 from src.hdr import *
 import os
+import time
+t = time.time()
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print("Usage:  python run.py [input_folder] [output_folder]")
@@ -11,4 +13,4 @@ if __name__ == '__main__':
             image = cv2.imread(os.path.join(idir, img_fl), -1)
             output_image = HDR_Filter.process(image)
             cv2.imwrite(os.path.join(sys.argv[2], img_fl.split('.')[0]+'_hdr_result.jpg'), 255 * output_image)
-
+print("Total running time = {}".format(time.time()-t))
